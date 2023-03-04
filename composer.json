@@ -1,0 +1,16 @@
+{
+    "name": "jack/custom-framework",
+    "description": "My Custom Package DDDDUUUUDDDDEEEE",
+    "autoload": {
+        "psr-4": {
+            "app\\":"./"
+        }
+    },
+    "authors": [
+        {
+            "name": "parimal00",
+            "email": "parimalbhattarai00@gmail.com"
+        }
+    ],
+    "require": {}
+}
