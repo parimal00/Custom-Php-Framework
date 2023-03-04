@@ -14,5 +14,9 @@ $app->router->get('/user',function(){
     return "hello from user";
 });
 
+$app->router->get('/admin',function(){
+    return "hello from admin";
+});
+
 
 $app->run();
