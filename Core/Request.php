@@ -15,4 +15,14 @@ class Request{
         }
         return $path;
     }
+
+    public function getBody(){
+        if($this->getMethod()==='GET'){
+            return $_GET;
+        }
+
+        if($this->getMethod()=="POST"){
+            return $_POST;
+        }
+    }
 }
