@@ -10,7 +10,7 @@ class Application{
     public static Application $app;
     public Response $response;
     private Request $request;
-
+    public static string $layout = 'nav';
     public function __construct($rootPath)
     {
         self::$ROOT_DIR = $rootPath;
@@ -24,4 +24,12 @@ class Application{
     public function run(){
         echo $this->router->resolve();
     }
+
+    // public function setLayout($layout){
+    //     $this->layout = $layout;
+    // }
+    
+    // public function getLayout(){
+    //     return $this->layout;
+    // }
 }

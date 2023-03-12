@@ -36,25 +36,31 @@ class Router{
         }
 
         if(is_array($callback)){
-           return call_user_func([new $callback[0],$callback[1]]);
+            $callback = [new $callback[0],$callback[1]];
+           return call_user_func($callback,$this->request);
         }
        
-        return call_user_func($callback);
+        return call_user_func($callback,$this->request);
     }
     
-    public function renderView($view){
+    public function renderView($view,$params=[]){
         $layout = $this->layoutContent();
-        $test = $this->renderViewOnly($view);
+        $test = $this->renderViewOnly($view,$params);
         return str_replace('{{content}}',$test,$layout);
     }
 
     private function layoutContent(){
         ob_start();
-        include_once Application::$ROOT_DIR."/Views/layouts/nav.php";
+        $layout = Application::$layout;
+        include_once Application::$ROOT_DIR."/Views/layouts/$layout.php";
         return ob_get_clean();
     }
 
-    private function renderViewOnly($view){
+    private function renderViewOnly($view,$params){
+        foreach($params as $key => $param){
+            $$key = $param;
+        }
+
         ob_start();
         include_once Application::$ROOT_DIR."/Views/$view.php";
         return ob_get_clean();
